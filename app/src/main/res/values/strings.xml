@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Mastermind</string>
+    <string name="Rouge">0</string>
+    <string name="Jaune">1</string>
+    <string name="Vert">2</string>
+    <string name="Bleu">3</string>
+    <string name="Orange">4</string>
+    <string name="Blanc">5</string>
+    <string name="Violet">6</string>
+    <string name="Rose">7</string>
+</resources>
