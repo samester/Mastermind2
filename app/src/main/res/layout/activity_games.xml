@@ -9,17 +9,6 @@
 
 
     <GridView
-        android:id="@+id/plateauJeu"
-        android:layout_width="384dp"
-        android:layout_height="386dp"
-        android:columnWidth="90dp"
-        android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:numColumns="5"
-        android:verticalSpacing="10dp"/>
-
-
-    <GridView
         android:id="@+id/affiche_bille"
         android:layout_width="386dp"
         android:layout_height="55dp"
@@ -29,6 +18,36 @@
         android:numColumns="8"
         android:verticalSpacing="10dp"/>
 
+    <Button
+        android:id="@+id/raz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RAZ"
+        android:layout_marginRight="64dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+
+
+    <Button
+        android:id="@+id/verif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verifier"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="64dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <GridView
+        android:id="@+id/plateauJeu"
+        android:layout_width="384dp"
+        android:layout_height="386dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="5"
+        android:verticalSpacing="10dp" />
 
 
 </android.support.constraint.ConstraintLayout>
