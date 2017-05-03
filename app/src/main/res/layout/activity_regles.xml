@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sam.mastermind.ReglesActivity">
 
 
@@ -15,9 +19,7 @@
         android:gravity="center"
         android:textSize="50dp"
         android:id="@+id/lesRegles"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="495dp"
-        android:ems="10"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp" />
+        android:ems="10" />
 </android.support.constraint.ConstraintLayout>

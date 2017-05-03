@@ -119,9 +119,9 @@ public class GamesActivity extends AppCompatActivity {
                             break;
                         case 4 : lesChoix.add(R.drawable.sol4);
                             //Gerer fin de partie
-                            hasWin = true;
                             Intent intent = new Intent(mContext, FinDePartieActivity.class);
-                            intent.putExtra(HASWIN, hasWin);
+                            intent.putIntegerArrayListExtra(RESULTAT, (ArrayList) laSolution);
+                            intent.putExtra(HASWIN, true);
                             startActivity(intent);
                             finish();
 
@@ -157,15 +157,10 @@ public class GamesActivity extends AppCompatActivity {
                     {
 
                         Intent intent = new Intent(mContext, FinDePartieActivity.class);
-                        intent.putExtra(HASWIN, hasWin);
+                        intent.putExtra(HASWIN, false);
                         intent.putIntegerArrayListExtra(RESULTAT, (ArrayList) laSolution);
                         startActivity(intent);
                         finish();
-                        /*
-                        lesChoix.addAll(laSolution);
-                        nbCoup++;
-                        lesChoix.add(R.mipmap.ic_launcher);
-                        */
                     }
 
                 } else {
