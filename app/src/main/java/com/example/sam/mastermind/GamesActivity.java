@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -32,6 +31,7 @@ public class GamesActivity extends AppCompatActivity {
 
 
     String HASWIN = "HASWIN";
+    String RESULTAT = "LASOLUCE";
     boolean hasWin = false;
 
     @Override
@@ -118,6 +118,14 @@ public class GamesActivity extends AppCompatActivity {
                         case 3 : lesChoix.add(R.drawable.sol3);
                             break;
                         case 4 : lesChoix.add(R.drawable.sol4);
+                            //Gerer fin de partie
+                            hasWin = true;
+                            Intent intent = new Intent(mContext, FinDePartieActivity.class);
+                            intent.putExtra(HASWIN, hasWin);
+                            startActivity(intent);
+                            finish();
+
+
                             break;
                         case 10: lesChoix.add(R.drawable.sol10);
                             break;
@@ -137,8 +145,6 @@ public class GamesActivity extends AppCompatActivity {
                             break;
                         case 31: lesChoix.add(R.drawable.sol31);
                             break;
-
-
                         case 40: lesChoix.add(R.drawable.sol40);
                             break;
                     }
@@ -149,19 +155,21 @@ public class GamesActivity extends AppCompatActivity {
 
                     if(nbCoup == 8)
                     {
-                        /*
-                        Intent intent = new Intent(LauncherActivity.class, FinDePartieActifity.class);
-                        intent.putExtra(HASWIN, hasWin);
-                        startActivity(intent);
-                        */
 
+                        Intent intent = new Intent(mContext, FinDePartieActivity.class);
+                        intent.putExtra(HASWIN, hasWin);
+                        intent.putIntegerArrayListExtra(RESULTAT, (ArrayList) laSolution);
+                        startActivity(intent);
+                        finish();
+                        /*
                         lesChoix.addAll(laSolution);
                         nbCoup++;
                         lesChoix.add(R.mipmap.ic_launcher);
+                        */
                     }
 
                 } else {
-                    //Toaster
+                    Toast.makeText(mContext, "Vous devez placer 4 billes avant de lancer une vérification", Toast.LENGTH_LONG).show();
                 }
             }
         });
