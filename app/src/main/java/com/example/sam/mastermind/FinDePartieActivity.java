@@ -18,6 +18,9 @@ public class FinDePartieActivity extends AppCompatActivity {
     String HASWIN = "HASWIN";
     String RESULTAT = "LASOLUCE";
 
+
+    int steph = 0;
+
     TextView leResultat;
     GridView mGridView;
     Button retry;
