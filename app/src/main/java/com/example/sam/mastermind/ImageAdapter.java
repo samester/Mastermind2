@@ -1,6 +1,8 @@
 package com.example.sam.mastermind;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,9 +12,6 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Aymeric on 03/05/2017.
- */
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
@@ -56,7 +55,7 @@ public class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setLayoutParams(new GridView.LayoutParams(dpToPixel(32), dpToPixel(32)));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
         } else {
@@ -65,6 +64,14 @@ public class ImageAdapter extends BaseAdapter {
 
         imageView.setImageResource(mThumbIds.get(position));
         return imageView;
+    }
+
+    private int dpToPixel(int dp)
+    {
+        Resources resources = mContext.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return (int) px;
     }
 
 

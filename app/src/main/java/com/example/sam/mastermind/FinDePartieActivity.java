@@ -32,7 +32,7 @@ public class FinDePartieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fin_de_partie);
         Intent intent = getIntent();
-        haswin = intent.getBooleanExtra(HASWIN, false);
+        haswin = intent.getBooleanExtra(HASWIN, true);
         laSolution = intent.getIntegerArrayListExtra(RESULTAT);
 
         leResultat = (TextView) findViewById(R.id.resultat);
@@ -48,7 +48,7 @@ public class FinDePartieActivity extends AppCompatActivity {
         {
             leResultat.setText("Dommage Vous avez perdu, pourquoi ne pas réessayer ?\n");
         }
-        leResultat.append("La Solution était : \n");
+        leResultat.append("La solution était : \n");
 
         mGridView.setAdapter(new ImageAdapter(this, laSolution));
 
@@ -67,7 +67,5 @@ public class FinDePartieActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }
