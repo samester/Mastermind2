@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -41,6 +42,11 @@ public class GamesActivity extends AppCompatActivity {
 
         createSolutionAleat();
 
+
+        //Log.d(laSolution.get(1), "solution 1 : ");
+        //Log.d(laSolution.get(2), "solution 2 : ");
+        //Log.d(laSolution.get(3), "solution 3 : ");
+
         razButton = (Button) findViewById(R.id.raz);
 
         verifButton = (Button) findViewById(R.id.verif);
@@ -63,7 +69,13 @@ public class GamesActivity extends AppCompatActivity {
                     nbBoule++;
                 }
             }
-        });
+        }
+
+
+
+        );
+
+        Log.d(IntegerBoulesToString(), "solution 0 : ");
 
         //Gerer RAZ et VERIF(+ ENDGAME)
         razButton.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +134,7 @@ public class GamesActivity extends AppCompatActivity {
                             hasWin = true;
                             Intent intent = new Intent(mContext, FinDePartieActivity.class);
                             intent.putExtra(HASWIN, hasWin);
+                            intent.putIntegerArrayListExtra(RESULTAT, (ArrayList) laSolution);
                             startActivity(intent);
                             finish();
 
@@ -153,7 +166,7 @@ public class GamesActivity extends AppCompatActivity {
                     nbBoule = 0;
                     lePlateau.setAdapter(new ImageAdapter(mContext, lesChoix));
 
-                    if(nbCoup == 8)
+                    if(nbCoup == 8 && !hasWin)
                     {
 
                         Intent intent = new Intent(mContext, FinDePartieActivity.class);
@@ -203,5 +216,62 @@ public class GamesActivity extends AppCompatActivity {
                    return true;
            }
            return false;
+    }
+
+    private String IntegerBoulesToString()
+    {
+        String str = "";
+        for(int i = 0; i < 4; i++)
+        {
+            int j = 0;
+            while(!(laSolution.get(i).equals((Integer) lesBoules.getAdapter().getItem(j)))) j++;
+            switch(j)
+            {
+
+                /**
+                 *
+                 *   blanc;
+                     bleu;
+                     jaune;
+                     orange;
+                     rose;
+                     rouge;
+                     vert;
+                     violet;
+                 *
+                 */
+
+                case 0 : str += "blanc; ";
+                    break;
+
+                case 1 : str += "bleu; ";
+                    break;
+
+                case 2 : str += "jaune; ";
+                    break;
+
+                case 3 : str += "orange; ";
+                    break;
+
+                case 4 : str += "rose; ";
+                    break;
+
+                case 5 : str += "rouge; ";
+                    break;
+
+                case 6 : str += "vert; ";
+                    break;
+
+                case 7 : str += "violet; ";
+                    break;
+
+                default : str += "???";
+                    break;
+
+            }
+        }
+
+
+        return str;
     }
 }
